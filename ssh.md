@@ -1,4 +1,4 @@
-## struts2
+## 1. struts2
 1. 导入jar包
 2. 创建action类，在其中定义execute()方法
 3. 在src目录下配置struts.xml文件（配置action的访问路径）
@@ -56,7 +56,7 @@
 2. 全局：
 
 
-## Hibernate
+## 2. Hibernate
 
 #### Entity.hbm.xml的配置
 
