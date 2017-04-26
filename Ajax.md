@@ -1,24 +1,25 @@
 ### itelliJ快捷键
 
 File -> new Projecr -> new Module
-`alt+insert` 创建getter and setter等
-`sout+tab` 快速向console输出
 
-`shift+ctrl+space`  补全
-`ctrl+alt+space`  补全
-`alt+enter`  
+1. `alt+insert` 创建getter and setter等
+2. `sout+tab` 快速向console输出
+3. `shift+ctrl+space`  补全
+4. `ctrl+alt+space`  补全
+5. `alt+enter`  代码提示
 
 ### AJAX五步
 
-1.创建**XMLHttpRequest**对象（针对不同浏览器）
-2.注册回调函数
-3.调用open("GET","url",true)方法
-4.向服务器发送数据send(content)
-5.在回调函数针对不同响应状态进行处理
+1. 创建**XMLHttpRequest**对象（针对不同浏览器）
+2. 注册回调函数
+3. 调用open("GET","url",true)方法
+4. 向服务器发送数据send(content)
+5. 在回调函数针对不同响应状态进行处理
 
 ---
 ### javascript实现
 
+```javascript
     //1.获取元素节点的值
     var userName = document.getElementById("name").value;
     
@@ -36,7 +37,7 @@ File -> new Projecr -> new Module
     xmlhttp.send(null);
     function callback(){
     }
-
+```
 ---
 ### Jquery实现
 
@@ -98,29 +99,29 @@ File -> new Projecr -> new Module
 
 ##### jquery解析xml
 
-1.将data转换为jquery对象
+    1. 将data转换为jquery对象
     var domObj = $(data);
-2.dom解析
+    2. dom解析
 
 ##### 返回xml数据
 
-1.服务器端 response.setContentType("text/xml;charset=utf-8");
-2.服务器返回的信息要加标签
-3.页面端 var domObj = xmlhttp.responseXml;然后进行解析
+    1. 服务器端 response.setContentType("text/xml;charset=utf-8");
+    2. 服务器返回的信息要加标签
+    3. 页面端 var domObj = xmlhttp.responseXml;然后进行解析
 
 ##### 中文乱码解决方案
 
-String old = request.getParameter("name");
-1.页面端对发送的数据做一次encodeURI(),var url = "AjaxServer?name=" +encodeURI(userName);
+    String old = request.getParameter("name");
+    1. 页面端对发送的数据做一次encodeURI(),var url = "AjaxServer?name=" +encodeURI(userName);
     服务器端使用String name = new String(old.getBytes("iso8859-1"), "UTF-8")
-2.页面端对发送的数据做两次encodeURI(),var url = "AjaxServer?name=" +encode(encodeURI(userName));
+    2.页面端对发送的数据做两次encodeURI(),var url = "AjaxServer?name=" +encode(encodeURI(userName));
     服务器端String name = URLDecoder.decode(old,"UTF-8");
 
 ##### JSON
 
-注意事项：
+    注意事项：
     服务器回传json对象时,要加一对括号，eval("("+data+")");
 
 ##### jquery
 
-获取当前节点距离上，左边界距离：var offset = node.offset(),offset对象中有left，top两个属性
+    获取当前节点距离上，左边界距离：var offset = node.offset(),offset对象中有left，top两个属性
