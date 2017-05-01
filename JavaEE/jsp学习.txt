@@ -1,0 +1,37 @@
+可用对象：request,response,session,application,config,out,page(this)
+
+jsp最佳实践：
+	<%
+		//java代码
+		Date date = new Date();
+		String time = date.toLocaleString();
+	%>
+	<%=time %> //脚本表达式输出
+	<%=date.toLocaleString() %>
+	
+	
+//多个脚本片段可以相互调用，会被翻译到service方法内部
+<%
+	for(int i=0;i<9;i++){
+%>	
+	aaaa
+<%
+	}
+%>
+
+
+//jsp声明，会被翻译到service方法外，让jsp拥有自己的方法
+<%!
+	public void run(){}
+	static {}
+	private int num = 0;
+%>
+
+
+//jsp注释
+<%--      注释      --%>
+//html,xml注释
+<!--  注释 -->
+
+
+错误处理页面isErrorPage="true"会附带exception对象

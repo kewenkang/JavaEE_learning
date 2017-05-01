@@ -1,0 +1,31 @@
+document.getElementById();
+document.getElementsByName();
+document.getElementsByTagName();
+document.getElementsByClassName();
+createElement("td");
+createTextNode("wqew");
+td.appendChild(text);
+
+
+element.hasChildNode();
+element.nodeName;	(只读)
+element.nodeType; 1(元素节点),2(属性节点),3(文本节点)
+element.nodeValue;(对文本节点来说，可以返回文本内容)
+
+element.firstChild;
+element.lastChild;
+element.childNodes[0];
+
+element.getAttributeNode("name");
+
+replaceChild(new ,old);  //return old;
+getAttribute("Attributename");
+
+window.onload=function(){
+	
+}
+
+<select size=10 multiple="multiple" >
+//select有一个属性selectedIndex表示选中的索引，如有多个被选中只显示第一个的索引，除非其被移走
+
+练习：js读取xml文件
