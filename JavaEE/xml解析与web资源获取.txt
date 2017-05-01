@@ -1,0 +1,130 @@
+dom和sax解析的区别：
+1.dom解析的优点是对文档的crud比较方便，缺点是占用内存比较大
+2.sax解析的优点是占用内存少，解析速度快，缺点是对文档的crud不方便
+
+//解析获得xml文件的document对象
+DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+DocumentBuilder builder = factory.newDocumentBuilder();
+Document document = builder.parse("xxxx.xml");
+//对document的一系列操作
+...
+//将修改后的xml文件写回
+TransformerFactory tffactory = TransformerFactory.newInstance();
+Transformer tf = tffactory.newTransformer();
+tf.transform(new DOMSource(document),new SourceResult(new FileOutputStreame("")));
+
+SAXPaserFactory factory = SAXPaserFactory.newInstance();
+SAXPaser paser = factory.newSAXPaser();
+
+
+//在servlet中读取文件用servletContext获取web资源
+InputStream in = this.getServletContext().getResourceAsStream("/db.properties");//获取资源流
+
+Properties props =new Properties(); 
+props.load(in);
+
+String value = props.getProperty(name);
+
+//通过得到资源绝对路径来读文件
+String path = this.getServletContext().getRealPath("/WEB-INF/classes/db.properties");
+String filename = path.substring(path.lastIndexOf("\\")+1);
+FileInputStream in = new FileInputStream(path);
+
+Properties props =new Properties(); 
+props.load(in);
+
+
+//在servlet中读取文件用servletContext
+//如果读取资源文件的程序不是servlet，就只能通过类装载器去读了
+//通过类装载器读取文件时，文件不能太大
+InputStream in = UserDao.class.getClassLoader().getResourceAsStream("db.properties");
+
+Properties props =new Properties(); 
+props.load(in);
+
+
+//通过类装载器读取文件时，文件以字节码的形式储存在内存中，无法获得更新后的文件
+//怎么办
+String path = UserDao.class.getClassLoader().getResource("db.properties").getPath();
+FileInputStream in = new FileInputStream(path);
+
+
+//错误导致下载
+response.setHeader("content-type","text/html;charset=UTF-8");//设置编码
+response.setHeader("content-type","text/html,charset=UTF-8");//设置下载
+
+
+//servlet下载文件时，文件名带有中文，怎么办？
+String path = this.getServletContext().getRealPath("/download/中文.jpg");
+String filename = path.substring(path.lastIndexOf("\\")+1);
+response.setHeader("content-disposition","attachment;filename="+URLEncoder.encode(filename,"UTF-8"));
+
+//servlet转发
+this.getServletContext().getRequestDispatcher("跳转地址").forward(request,response);
+
+//servelt自动跳转
+//用meta标签
+<meta http-equiv="refresh" content="3;url=url"/>
+
+
+//控制浏览器缓存
+response.setHeader("expires",System.currentTimeMillis()+1000);
+
+
+//response实现请求重定向(在登录跳转时使用;购物完成跳转)
+//重定向的特点：浏览器向服务器发两次请求；浏览器地址栏会发生变化；尽量不用，因为会加大服务器的压力
+response.setRedirect("index.jsp");
+
+
+//response使用的一些细节：
+1.getOutputStream()返回ServletOutputStream和getWriter()返回PrintWriter在一次请求中，不能同时调用
+2.
+
+
+//uri可以表示任意资源
+url表示互联网上的资源，uri是url爸爸
+
+
+//获取请求数据时，要先检查再使用
+for(int i=0;value!=null && !value.trim().equal("") && i<value.length;i++)
+
+
+//request获取数据的方式
+1.String value = request.getParatemer(name);
+2.Enumaration names = request.getParatemerNames();
+3.String[] values = request.getParatemerValues(name);
+4.Map<String,String[]> map = request.getParatemerMap();
+  User user = new User();
+  BeanUtils.populate(user,map);
+  
+//BeanUtils.copyProperties(dest,from);bean的拷贝
+
+//url后面如果跟有中文，要编码后提交
+
+//改变request码表只对post有效
+request.setCharacterEncoding("utf-8");
+//解决get提交的乱码，手工处理；超链接中文乱码也要手工处理
+String username = request.getParatemer(username);
+username = new String(username.getBytes("iso8859-1"),"utf-8");
+
+
+//request域
+1.转发  (不能同时提交两次转发，要return;)
+String data = "qaaa";
+request.setAttribute("data",data);  
+request.getRequestDispatcher("/message.jsp").forward(request,response);
+2.forward在跳转时会清空响应体数据，只发送一次请求，地址栏不变
+3.include页面包含
+
+
+//防盗链
+String referer = request.getHeader("referer");
+if(referer==null  || !referer.startWith("http://localhost")){
+	//重定向到首页
+	response.setRedirect("/day06/index.jsp");
+	return;
+}
+String data = "日记";
+response.getWriter().write(data);
+
+
