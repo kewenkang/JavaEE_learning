@@ -1,56 +1,56 @@
 ### 一、 python的数据结构
 
-1. hashmap  ->  dict
-    dict = {"red": 1, "green": 2, "blue": 3}
-    dict.get("red") 返回1，若没有则返回None
-    dict.pop("red") 删除"red"
-    for value in dict.values() 获取所有的value, key不用获取直接用key in dict
-    for k, v in dict.items() 获取所有的键值对
-2. array  ->  list
-    注：字符串也是数组
-    list = ["ww", "qq", "ee", "rr"] 
-    list.append("dd")
-    list.insert(index, value)
-    list.pop(index) 默认删除尾部元素
-3. set  ->  set
-    c_set = set()
-    c_set.add("www")
-    c_set.add("eee")
-    c_set.remove("www")
+    1. hashmap  ->  dict
+        dict = {"red": 1, "green": 2, "blue": 3}
+        dict.get("red") 返回1，若没有则返回None
+        dict.pop("red") 删除"red"
+        for value in dict.values() 获取所有的value, key不用获取直接用key in dict
+        for k, v in dict.items() 获取所有的键值对
+    2. array  ->  list
+        注：字符串也是数组
+        list = ["ww", "qq", "ee", "rr"] 
+        list.append("dd")
+        list.insert(index, value)
+        list.pop(index) 默认删除尾部元素
+    3. set  ->  set
+        c_set = set()
+        c_set.add("www")
+        c_set.add("eee")
+        c_set.remove("www")
 
 ---
 ### 二、 分支结构 注注注：python所有的分支结构后面都要加 **冒号**
 
-1. if...else
-    a=2
-    if a>0:
-        print 1
-    elif a==0:
-        print 0
-    else :
-        print -1
+    1. if...else
+        a=2
+        if a>0:
+            print 1
+        elif a==0:
+            print 0
+        else :
+            print -1
 
-2. for循环
-    for value in list:
-        print value
+    2. for循环
+        for value in list:
+            print value
 
-    sum = 0    
-    for value in range(1, 11):
-        sum += value
-    print sum
+        sum = 0    
+        for value in range(1, 11):
+            sum += value
+        print sum
 
-3. while循环
-    i = 1
-    while i < 10:
-        i += 1
-        if i % 2 =0:
+    3. while循环
+        i = 1
+        while i < 10:
+            i += 1
+            if i % 2 =0:
+                print i
+
+        while i > 1:
+            i -= 1
+            if i % 5 == 0:
+                break  # continue
             print i
-
-    while i > 1:
-        i -= 1
-        if i % 5 == 0:
-            break  # continue
-        print i
 
 #### 字符串 str='AbcdefG'
 
@@ -105,6 +105,7 @@
     + raise ValueError("xxxx") #抛出异常
     + except Exception as e: #捕获异常
 
+```python
         try:
             b = 3 / 0
         except Exception, e:
@@ -119,7 +120,7 @@
         else:
             print "4444"
             fh.close()
-
+```
 2. 调试
     + 断言 assert
         - assert n != 0, "n is zero"
