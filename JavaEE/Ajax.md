@@ -67,7 +67,7 @@ File -> new Projecr -> new Module
 ```javascript
     $.ajax(
         type:"GET", 
-        url:"...servlet",
+        url:"...servlet?aa=xx",
         dataType:"script"
      )   
      $.ajax(
