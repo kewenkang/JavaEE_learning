@@ -1,0 +1,28 @@
+1.
+2.select top 5 from (select employeeNo, employeeName, salary from dbo.Employee where department in ('财务科', '业务科'))
+3.select employeeNo, employeeName, birthday, department from dbo.Employee where birthday like '1973-9-%' and headShip = '职员' order by birthday desc
+4.select employeeNo, department, gender as '性别' from dbo.Employee where employeeName like '张%'
+5.select employeeName from dbo.Employment where employeeName like '张_'
+6.select gender, count(*) from dbo.Employment group by gender 
+7.select om.orderNo, c.customerName, om.orderSum from dbo.Customer c, dbo.OrderMaster om where and om.customerNo=p.customerNo 
+8.select * from dbo.Customer c, dbo.OrderMaster om, dbo.OrderDetail od where om.customerNo=p.customerNo and om.orderNo=od.orderNo
+9. 
+
+?select employeeName from dbo.Employee where employeeName like N'张_';
+
+select * from dbo.Customer c, dbo.OrderDetail od, dbo.OrderMaster om, dbo.Product p where od.orderNo=om.orderNo and om.customerNo=c.customerNo and p.productNo=od.productNo and p.productName='32M DRAM';
+
+select p.productNo, p.productName, sum(quantity) as num from dbo.OrderDetail od, dbo.Product p where od.productNo=p.productNo group by p.productNo, p.productName having sum(od.quantity) > 4;
+
+select om.orderNo, c.customerName, om.orderSum, om.invoiceNo 
+from dbo.OrderMaster om, (select employeeNo from dbo.Employee where employeeName=N'张小娟') e, dbo.Customer c 
+where om.employeeNo=e.employeeNo and om.customerNo=c.customerNo
+
+select c.customerName, c.customerNo, c.zip from dbo.Customer c where c.customerNo not in (select customerNo from dbo.OrderMaster) and c.address=N'北京市' order by c.zip desc;
+
+select od.orderNo, od.quantity, od.price from (select productNo from dbo.Product where productName=N'32M DRAM') p, dbo.OrderDetail od where od.productNo=p.productNo;
+
+select e2.employeeNo, e2.employeeName, e2.gender, e2.department from (select department from dbo.Employee where employeeNo='E2008005') e1, dbo.Employee e2 where e1.department=e2.department
+
+select om.customerNo, od.orderNo from dbo.OrderMaster om, (select od1.orderNo from dbo.OrderDetail od1, dbo.OrderDetail od2 where od1.orderNo=od2.orderNo and od1.productNo='P20050001' and od2.productNo='P20050003') od where om.orderNo=od.orderNo
+
